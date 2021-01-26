@@ -35,14 +35,16 @@ public class Company {
 
     //method 3
     Worker workedMost() {
-        Worker most = allWorkers.get(0).getWorkdays().w;
+        Worker most = allWorkers.get(0);
+        int mostHours = 0;
         for(Worker alpha:allWorkers){
             int sum = 0;
             for(Workday day:alpha.getWorkdays()) {
                 sum += day.workTime();
             }
-            if(alpha.workingDays()> most.workingDays()) {
+            if(sum > mostHours) {
                 most = alpha;
+                mostHours = sum;
             }
         }
         return most;
@@ -52,6 +54,7 @@ public class Company {
     void addWorker(Worker w) { allWorkers.add(w); }
 
     //method 5
+    //לא הצלחתי להשתמש בComparator
 //    void crisis() {
 //        ArrayList<Worker> highestPayed= allWorkers;
 //        ArrayList<Worker> mostOvertime= allWorkers;
