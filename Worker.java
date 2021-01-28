@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Worker {
     private String name;
     private ArrayList<Workday> workdays;
-    private int pay;
+    private Integer pay;
 
     //constructor
     public Worker(String name, int pay) {
@@ -31,11 +31,11 @@ public class Worker {
         this.workdays = workdays;
     }
 
-    public int getPay() {
+    public Integer getPay() {
         return pay;
     }
 
-    public void setPay(int pay) {
+    public void setPay(Integer pay) {
         this.pay = pay;
     }
     //method 1
@@ -58,7 +58,7 @@ public class Worker {
         return sum;
     }
     //method 3
-    Worker diligent(Worker other){
+    public Worker diligent(Worker other){
         int sumThis = 0;
         int sumOther =0;
         for(Workday day:this.workdays){
@@ -70,5 +70,14 @@ public class Worker {
         if(sumThis> sumOther)return this;
         else return other;
     }
-
+    //amount of extra hours worked total
+    public Integer overtimeHours(){
+        int sum = 0;
+        for(Workday day:workdays){
+            if(day.isExtra()){
+                sum+=day.workTime()-8;
+            }
+        }
+        return sum;
+    }
 }
